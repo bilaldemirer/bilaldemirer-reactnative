@@ -32,7 +32,12 @@ const ProductProvider = ({children}) => {
 
     try {
       const result = await ProductAPI.getAllCategories();
-      setCategories(result.data.categories);
+      var categoriesArray = result.data.categories;
+      categoriesArray.unshift({
+        id: 0,
+        name: 'All',
+      });
+      setCategories(categoriesArray);
     } catch (error) {
       console.log('error: ', error);
     }
