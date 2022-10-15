@@ -7,10 +7,15 @@
  */
 
 import React from 'react';
+import {ProductProvider} from './src/contexts';
 import {AppNavigator} from './src/navigators/AppNavigator';
 
 const App = () => {
-  return <AppNavigator />;
+  return (
+    <ProductProvider>
+      <AppNavigator />
+    </ProductProvider>
+  );
 };
 
 export default App;
