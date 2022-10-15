@@ -1,6 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   container: {
@@ -21,6 +22,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    height: windowHeight - 180,
   },
   productContainer: {
     width: windowWidth / 2 - 30,
@@ -61,5 +63,13 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  add: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    borderRadius: 50,
+    top: windowHeight - 80,
+    left: windowWidth - 100,
+    height: 70,
   },
 });

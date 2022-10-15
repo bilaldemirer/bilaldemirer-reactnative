@@ -4,7 +4,7 @@ import {useState} from 'react/cjs/react.development';
 import {useProduct} from '../../contexts';
 import HomeUI from './home.ui';
 
-const HomeContainer = () => {
+const HomeContainer = ({navigation}) => {
   const value = useProduct();
   const {products, categories, getCategory, getProduct, loading} = value;
 
@@ -43,6 +43,12 @@ const HomeContainer = () => {
     }
   };
 
+  const navigateToDetail = _id => {
+    navigation.navigate('Detail', {
+      _id,
+    });
+  };
+
   return (
     <HomeUI
       products={currentProducts}
@@ -51,6 +57,7 @@ const HomeContainer = () => {
       setCurrentCategory={setCurrentCategory}
       loading={loading}
       onPressCategory={onPressCategory}
+      navigateToDetail={navigateToDetail}
     />
   );
 };

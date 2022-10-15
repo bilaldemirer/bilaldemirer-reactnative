@@ -1,8 +1,19 @@
 import React from 'react';
-import {View, Text, FlatList, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Select} from '../../components';
+import {titleFormatter} from '../../utils/Formatter';
 import {styles} from './home.styles';
+import edit from '../../assets/edit.png';
+import search from '../../assets/search.png';
+import add from '../../assets/add.png';
 
 const HomeUI = ({
   products,
@@ -10,6 +21,7 @@ const HomeUI = ({
   currentCategory,
   loading,
   onPressCategory,
+  navigateToDetail,
 }) => {
   const renderItem = ({item}) => (
     <Select
@@ -23,14 +35,12 @@ const HomeUI = ({
     return;
   }
 
-  console.log('product: ', products[0]);
-
   return (
     <SafeAreaView styles={styles.container}>
       <View>
         <View style={styles.header}>
           <Text style={styles.headerText}>UPayments Store</Text>
-          <Text style={styles.icon}>Icon</Text>
+          <Image source={search} style={{width: 20, height: 20}} />
         </View>
         <View>
           <FlatList
@@ -45,7 +55,9 @@ const HomeUI = ({
         <ScrollView contentContainerStyle={styles.listContainer}>
           {products.map(product => {
             return (
-              <TouchableOpacity style={styles.productContainer}>
+              <TouchableOpacity
+                style={styles.productContainer}
+                onPress={() => navigateToDetail(product._id)}>
                 <View style={styles.productImage}>
                   <Image
                     source={{uri: product.avatar}}
@@ -53,16 +65,23 @@ const HomeUI = ({
                   />
                 </View>
                 <View style={styles.textContainer}>
-                  <Text style={styles.text}>{product.name}</Text>
+                  <Text style={styles.text}>
+                    {titleFormatter(product.name)}
+                  </Text>
                   <View style={styles.textInnerContainer}>
-                    <Text style={styles.text}>{product.price}</Text>
-                    <Text style={styles.text}>{product.price}</Text>
+                    <Text style={styles.text}>{`$${product.price}`}</Text>
+                    <Image source={edit} style={{width: 20, height: 20}} />
                   </View>
                 </View>
               </TouchableOpacity>
             );
           })}
         </ScrollView>
+      </View>
+      <View style={styles.add}>
+        <TouchableOpacity>
+          <Image source={add} style={{width: 70, height: 70}} />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
