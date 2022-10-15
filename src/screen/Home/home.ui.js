@@ -22,6 +22,7 @@ const HomeUI = ({
   loading,
   onPressCategory,
   navigateToDetail,
+  navigateToAdd
 }) => {
   const renderItem = ({item}) => (
     <Select
@@ -79,7 +80,7 @@ const HomeUI = ({
         </ScrollView>
       </View>
       <View style={styles.add}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateToAdd()}>
           <Image source={add} style={{width: 70, height: 70}} />
         </TouchableOpacity>
       </View>

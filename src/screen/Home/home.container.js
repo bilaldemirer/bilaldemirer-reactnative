@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect} from 'react';
-import {useState} from 'react/cjs/react.development';
+import React, {useEffect, useState} from 'react';
 import {useProduct} from '../../contexts';
 import HomeUI from './home.ui';
 
@@ -49,6 +48,10 @@ const HomeContainer = ({navigation}) => {
     });
   };
 
+  const navigateToAdd = _id => {
+    navigation.navigate('Add');
+  };
+
   return (
     <HomeUI
       products={currentProducts}
@@ -58,6 +61,7 @@ const HomeContainer = ({navigation}) => {
       loading={loading}
       onPressCategory={onPressCategory}
       navigateToDetail={navigateToDetail}
+      navigateToAdd={navigateToAdd}
     />
   );
 };
