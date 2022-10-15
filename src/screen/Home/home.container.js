@@ -6,9 +6,14 @@ import HomeUI from './home.ui';
 
 const HomeContainer = () => {
   const value = useProduct();
-  const {products, categories, getCategory, getProduct} = value;
+  const {products, categories, getCategory, getProduct, loading} = value;
 
   const [currentCategory, setCurrentCategory] = useState('All');
+  const [currentProducts, setCurrentProducts] = useState(products || []);
+
+  useEffect(() => {
+    filterProducts();
+  }, [currentCategory, products]);
 
   const fetchCatergory = async id => {
     // const id = '62e638fd1126b53e1c7deb65';
@@ -28,12 +33,23 @@ const HomeContainer = () => {
     setCurrentCategory(title);
   };
 
+  const filterProducts = () => {
+    let filteredProducts;
+    if (products) {
+      filteredProducts = products?.filter(x => x.category === currentCategory);
+      setCurrentProducts(
+        filteredProducts?.length > 0 ? filteredProducts : products,
+      );
+    }
+  };
+
   return (
     <HomeUI
-      products={products}
+      products={currentProducts}
       categories={categories}
       currentCategory={currentCategory}
       setCurrentCategory={setCurrentCategory}
+      loading={loading}
       onPressCategory={onPressCategory}
     />
   );
