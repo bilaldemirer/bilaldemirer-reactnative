@@ -34,7 +34,7 @@ const ProductProvider = ({children}) => {
       const result = await ProductAPI.getAllCategories();
       var categoriesArray = result.data.categories;
       categoriesArray.unshift({
-        id: 0,
+        _id: 0,
         name: 'All',
       });
       setCategories(categoriesArray);
