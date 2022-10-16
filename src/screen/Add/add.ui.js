@@ -1,15 +1,26 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './add.styles';
-import {TextField} from '../../components';
+import {Button, Select, TextField} from '../../components';
 
-const AddUI = ({productInfo, setProductInfo}) => {
-  console.log('ppppp: ', productInfo);
+const AddUI = ({
+  productInfo,
+  categories,
+  setProductInfo,
+  onPressAdd,
+  onPressCategory,
+}) => {
+  const renderItem = ({item}) => (
+    <Select
+      title={item.name}
+      selected={productInfo.category}
+      onPress={onPressCategory}
+    />
+  );
   return (
     <SafeAreaView styles={styles.container}>
       <View style={styles.innerContainer}>
-        <Text>aaa</Text>
         <TextField
           name="Product Title"
           onChangeText={text => setProductInfo({title: text})}
@@ -17,7 +28,7 @@ const AddUI = ({productInfo, setProductInfo}) => {
         />
         <TextField
           name="Price"
-          onChangeText={text => setProductInfo({price: text})}
+          onChangeText={text => setProductInfo({price: parseInt(text, 10)})}
           size="s"
         />
         <TextField
@@ -31,6 +42,19 @@ const AddUI = ({productInfo, setProductInfo}) => {
           size="s"
         />
         <Text>{`Selected Category: ${productInfo.category}`}</Text>
+        <View>
+          <FlatList
+            style={{padding: 20}}
+            data={categories}
+            renderItem={renderItem}
+            keyExtractor={item => item._id}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button title="Add Product" onPress={onPressAdd} />
+        </View>
       </View>
     </SafeAreaView>
   );

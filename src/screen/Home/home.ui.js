@@ -22,7 +22,7 @@ const HomeUI = ({
   loading,
   onPressCategory,
   navigateToDetail,
-  navigateToAdd
+  navigateToAdd,
 }) => {
   const renderItem = ({item}) => (
     <Select
@@ -31,10 +31,6 @@ const HomeUI = ({
       onPress={onPressCategory}
     />
   );
-
-  if (loading) {
-    return;
-  }
 
   return (
     <SafeAreaView styles={styles.container}>

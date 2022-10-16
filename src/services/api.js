@@ -21,9 +21,10 @@ const get = async url => {
   return result;
 };
 
-const post = async url => {
+const post = async (url, body) => {
   const result = await axios.post(
     `https://upayments-studycase-api.herokuapp.com/api/${url}`,
+    JSON.stringify(body),
     {
       headers: headers,
     },
@@ -42,8 +43,8 @@ const getProduct = async id => {
   return await get(`products/${id}`);
 };
 
-const postProduct = async () => {
-  return await post('products');
+const postProduct = async body => {
+  return await post('products', body);
 };
 
 const getAllCategories = async () => {

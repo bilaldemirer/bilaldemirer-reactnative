@@ -69,13 +69,11 @@ const ProductProvider = ({children}) => {
     setLoading(false);
   };
 
-  const postProduct = async () => {
+  const postProduct = async body => {
     setLoading(true);
 
-    const productData = [];
-
     try {
-      const result = await ProductAPI.postProduct(productData);
+      const result = await ProductAPI.postProduct({product: body});
       return result;
     } catch (error) {
       console.log('error: ', error);

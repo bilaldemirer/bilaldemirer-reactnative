@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    height: windowHeight - 180,
+    paddingBottom: 200,
   },
   productContainer: {
     width: windowWidth / 2 - 30,
