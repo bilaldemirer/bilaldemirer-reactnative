@@ -10,14 +10,6 @@ const AddContainer = ({navigation, route}) => {
   const {postProduct, categories} = value;
 
   const [currentCategories, setCurrentCategories] = useState(categories || []);
-
-  useEffect(() => {
-    if (categories) {
-      let data = categories.shift();
-      setCurrentCategories(categories);
-    }
-  }, [categories]);
-
   const initialState = {
     name: '',
     price: '',
@@ -31,6 +23,18 @@ const AddContainer = ({navigation, route}) => {
     (state, updates) => ({...state, ...updates}),
     initialState,
   );
+
+  useEffect(() => {
+    if (categories) {
+      let data = [];
+      categories.forEach(category => {
+        if (category.name !== 'All') {
+          data.push(category);
+        }
+      });
+      setCurrentCategories(data);
+    }
+  }, [categories]);
 
   const onPressAdd = async () => {
     const result = await postProduct(productInfo);
