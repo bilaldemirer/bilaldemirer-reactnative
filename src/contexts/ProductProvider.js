@@ -73,11 +73,13 @@ const ProductProvider = ({children}) => {
     setLoading(true);
 
     try {
-      const result = await ProductAPI.postProduct({product: body});
+      const result = await ProductAPI.postProduct(body);
+      await getProducts();
       return result;
     } catch (error) {
       console.log('error: ', error);
     }
+
     setLoading(false);
   };
 

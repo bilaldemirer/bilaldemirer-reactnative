@@ -5,7 +5,7 @@ import HomeUI from './home.ui';
 
 const HomeContainer = ({navigation}) => {
   const value = useProduct();
-  const {products, categories, loading} = value;
+  const {products, categories} = value;
 
 
   const [currentCategory, setCurrentCategory] = useState('All');
@@ -46,7 +46,6 @@ const HomeContainer = ({navigation}) => {
       categories={categories}
       currentCategory={currentCategory}
       setCurrentCategory={setCurrentCategory}
-      loading={loading}
       onPressCategory={onPressCategory}
       navigateToDetail={navigateToDetail}
       navigateToAdd={navigateToAdd}

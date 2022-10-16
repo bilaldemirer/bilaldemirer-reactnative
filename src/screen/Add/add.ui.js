@@ -23,7 +23,7 @@ const AddUI = ({
       <View style={styles.innerContainer}>
         <TextField
           name="Product Title"
-          onChangeText={text => setProductInfo({title: text})}
+          onChangeText={text => setProductInfo({name: text})}
           size="s"
         />
         <TextField

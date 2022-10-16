@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJkZW1pcmVyNzBAZ21haWwuY29tIiwiZ2l0aHViIjoiaHR0cHM6Ly9naXRodWIuY29tL2JpbGFsZGVtaXJlciIsImlhdCI6MTY2NTg0MDc4MywiZXhwIjoxNjY2MjcyNzgzfQ.z0dOJ2ZxDc-FpF7FwUwKpqdvxJ2nP9sby094zShNyTA';
-
 const headers = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
