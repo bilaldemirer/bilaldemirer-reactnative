@@ -67,9 +67,16 @@ export const styles = StyleSheet.create({
   add: {
     position: 'absolute',
     backgroundColor: 'white',
-    borderRadius: 50,
-    top: windowHeight - 80,
+    top: windowHeight - 50,
+    height: 50,
+    width: windowWidth,
+  },
+  addBtn: {
     left: windowWidth - 100,
+    borderRadius: 50,
+    bottom: 40,
+    backgroundColor: 'white',
+    width: 70,
     height: 70,
   },
 });

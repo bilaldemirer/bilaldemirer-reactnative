@@ -76,7 +76,7 @@ const HomeUI = ({
         </ScrollView>
       </View>
       <View style={styles.add}>
-        <TouchableOpacity onPress={() => navigateToAdd()}>
+        <TouchableOpacity style={styles.addBtn} onPress={() => navigateToAdd()}>
           <Image source={add} style={{width: 70, height: 70}} />
         </TouchableOpacity>
       </View>
