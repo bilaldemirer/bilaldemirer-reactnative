@@ -45,33 +45,24 @@ const ProductProvider = ({children}) => {
   };
 
   const getCategory = async id => {
-    setLoading(true);
-
     try {
       const result = await ProductAPI.getCategory(id);
       return result.data;
     } catch (error) {
       console.log('error: ', error);
     }
-
-    setLoading(false);
   };
 
   const getProduct = async id => {
-    setLoading(true);
-
     try {
       const result = await ProductAPI.getProduct(id);
       return result.data;
     } catch (error) {
       console.log('error: ', error);
     }
-    setLoading(false);
   };
 
   const postProduct = async body => {
-    setLoading(true);
-
     try {
       const result = await ProductAPI.postProduct(body);
       await getProducts();
@@ -79,8 +70,6 @@ const ProductProvider = ({children}) => {
     } catch (error) {
       console.log('error: ', error);
     }
-
-    setLoading(false);
   };
 
   return (
@@ -92,6 +81,7 @@ const ProductProvider = ({children}) => {
         getCategory,
         getProduct,
         postProduct,
+        setLoading,
       }}>
       {children}
     </ProductContext.Provider>
