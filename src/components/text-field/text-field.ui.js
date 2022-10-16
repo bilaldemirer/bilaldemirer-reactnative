@@ -16,11 +16,12 @@ const TextFieldUI = ({
       <View style={styles.innerContainer}>
         <TextInput
           style={[styles.input, size === 's' ? {height: 40} : {height: 100}]}
-          placeholder={name}
+          placeholder={focus ? '' : name}
           onChangeText={onChangeInputText}
           numberOfLines={7}
           multiline={size === 's' ? false : true}
           onBlur={() => (text.length > 0 ? setFocus(true) : setFocus(false))}
+          onFocus={() => setFocus(true)}
         />
       </View>
     </View>
