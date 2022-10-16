@@ -1,10 +1,8 @@
 import React from 'react';
 import ButtonUI from './button.ui';
 
-const ButtonContainer = props => {
-  const {} = props;
-
-  return <ButtonUI />;
+const ButtonContainer = ({title, onPress}) => {
+  return <ButtonUI title={title} onPress={onPress} />;
 };
 
 export default ButtonContainer;
