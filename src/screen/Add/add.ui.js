@@ -44,7 +44,7 @@ const AddUI = ({
         <Text>{`Selected Category: ${productInfo.category}`}</Text>
         <View>
           <FlatList
-            style={{padding: 20}}
+            style={{paddingTop: 10}}
             data={categories}
             renderItem={renderItem}
             keyExtractor={item => item._id}
